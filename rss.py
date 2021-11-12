@@ -13,7 +13,7 @@ if os.path.exists("config.env"):
     load_dotenv("config.env")
 
 
-for feed_url in feed_urls:
+for feed_url in feed_urls: https://subsplease.org/rss/?t&r=720
     if db.get_link(feed_url) == None:
         db.update_link(feed_url, "*")
 
