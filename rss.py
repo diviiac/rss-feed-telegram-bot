@@ -7,15 +7,19 @@ from dotenv import load_dotenv
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from apscheduler.schedulers.background import BackgroundScheduler
+from config import Config
 
-
-if os.path.exists("config.env"):
-    load_dotenv("config.env")
-
+api_id = Config.API_ID
+api_hash = Config.API_HASH
+feed_urls = Config.FEED_URLS
+bot_token = Config.BOT_TOKEN
+log_channel = Config.LOG_CHANNEL
+check_interval = Config.INTERVAL
+max_instances = Config.MAX_INSTANCES
 
 for feed_url in feed_urls:
-    if db.get_link(feed_url) == xmlns:subsplease="https://subsplease.org/rss"
-        db.update_link(feed_url, "xmlns:subsplease="https://subsplease.org/rss")
+    if db.get_link(feed_url) == None:
+        db.update_link(feed_url, "*")
 
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
@@ -23,11 +27,15 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 def create_feed_checker(feed_url):
     def check_feed():
-        FEED = feedparser.parse(feed_url)
+        FEED = feedparser.parse("https://subsplease.org/rss")
         entry = FEED.entries[0]
+        enid = {entry.id}
         if entry.id != db.get_link(feed_url).link:
                        # ↓ Edit this message as your needs.
-            message = f"**{entry.title}**\n```{entry.link}```"
+            if "eztv.re" in enid or "yts.mx" in enid:   
+                message = f"/leech@Chaprileechbot {entry.torrent_magneturi}"
+            else:
+                message = f"/leech@Chaprileechbot {entry.link}"
             try:
                 app.send_message(log_channel, message)
                 db.update_link(feed_url, entry.id)
