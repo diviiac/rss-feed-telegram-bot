@@ -15,7 +15,7 @@ if os.path.exists("config.env"):
 
 for feed_url in feed_urls:
     if db.get_link(feed_url) == xmlns:subsplease="https://subsplease.org/rss"
-        db.update_link(feed_url, "*")
+        db.update_link(feed_url, "xmlns:subsplease="https://subsplease.org/rss")
 
 
 app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
