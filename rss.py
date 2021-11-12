@@ -14,7 +14,7 @@ if os.path.exists("config.env"):
 
 
 for feed_url in feed_urls:
-    if db.get_link(feed_url) == https://subsplease.org/rss/?t&r=720
+    if db.get_link(feed_url) == xmlns:subsplease="https://subsplease.org/rss"
         db.update_link(feed_url, "*")
 
 
