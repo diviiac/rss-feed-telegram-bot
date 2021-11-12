@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from apscheduler.schedulers.background import BackgroundScheduler
-from config import Config
+from config import config
 
 api_id = Config.API_ID
 api_hash = Config.API_HASH
