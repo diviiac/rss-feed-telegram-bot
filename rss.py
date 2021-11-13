@@ -37,15 +37,15 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 def create_feed_checker(feed_url):
     def check_feed():
-        FEED = feedparser.parse("https://subsplease.org/rss/")
+        FEED = feedparser.parse("https://nyaa.si/?page=rss")
         entry = FEED.entries[0]
         enid = {entry.id}
         if entry.id != db.get_link(feed_url).link:
                        # ↓ Edit this message as your needs.
             if "eztv.re" in enid or "yts.mx" in enid:   
-                message = f"/leech@Chaprileechbot {entry.torrent_magneturi}"
+                message = f"IAC {entry.torrent_magneturi}"
             else:
-                message = f"/leech@Chaprileechbot {entry.link}"
+                message = f"IAC {entry.link}"
             try:
                 app.send_message(log_channel, message)
                 db.update_link(feed_url, entry.id)
