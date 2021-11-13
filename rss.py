@@ -37,7 +37,7 @@ app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 def create_feed_checker(feed_url):
     def check_feed():
-        FEED = feedparser.parse("https://subsplease.org/rss/?t&r=sd")
+        FEED = feedparser.parse("https://subsplease.org/rss/?r=sd")
         entry = FEED.entries[0]
         if entry.id != db.get_link(feed_url).link:
                        # ↓ Edit this message as your needs.
