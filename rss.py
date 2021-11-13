@@ -39,10 +39,9 @@ def create_feed_checker(feed_url):
     def check_feed():
         FEED = feedparser.parse("https://subsplease.org/rss/")
         entry = FEED.entries[0]
-        enid = {entry.id}
         if entry.id != db.get_link(feed_url).link:
                        # ↓ Edit this message as your needs.
-          message = f"```{entry.link}```"
+            message = f"**{entry.title}**\n```{entry.link}```"
             try:
                 app.send_message(log_channel, message)
                 db.update_link(feed_url, entry.id)
