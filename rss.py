@@ -43,9 +43,9 @@ def create_feed_checker(feed_url):
         if entry.id != db.get_link(feed_url).link:
                        # ↓ Edit this message as your needs.
             if "eztv.re" in enid or "yts.mx" in enid:   
-                message = entry.torrent_magneturi
+                message = "entry.torrent_magneturi"
             else:
-                message = entry.link
+                message = "entry.link"
             try:
                 app.send_message(log_channel, message)
                 db.update_link(feed_url, entry.id)
