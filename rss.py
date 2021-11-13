@@ -42,7 +42,7 @@ def create_feed_checker(feed_url):
         enid = {entry.id}
         if entry.id != db.get_link(feed_url).link:
                        # ↓ Edit this message as your needs.
-            if "eztv.re" in enid or "yts.mx" in enid:   
+            if "nyaa.si" in enid or "nyaa.lol" in enid:   
                 message = f"IAC {entry.torrent_magneturi}"
             else:
                 message = f"IAC {entry.link}"
